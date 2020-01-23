@@ -4,6 +4,7 @@ Sample todo management api (REST) using prisma2.
 
 - https://github.com/prisma/prisma2
   - Prisma Client JS
+  - Prisma Migrate
   - Prisma Studio
 
 ## setup
@@ -16,8 +17,6 @@ Launch postgres server using `docker-compose.yml`.
 $ docker-compose up -d
 ```
 
-`User` and `TodoItem` tables will be created on start up. (see dockerfiles/postgres/init.sql)
-
 ### install dependencies
 
 Install dependencies.
@@ -29,6 +28,36 @@ $ npm install
 Prisma Client will be generated via `postinstall`.
 
 ## how to
+
+### migration
+
+- create new migration
+
+Edit `schema.prisma` to add new model.
+
+```
+model NewModel {
+  id Int @id @default(autoincrement())
+}
+```
+
+Generate migration files.
+
+```bash
+$ npm run migrate:save
+```
+
+- apply migration
+
+```bash
+$ npm run migrate:up
+```
+
+- rollback migration
+
+```bash
+$ npm run migrate:down
+```
 
 ### start api server
 

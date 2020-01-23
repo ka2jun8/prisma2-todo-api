@@ -8,8 +8,8 @@ datasource db {
 }
 
 model TodoItem {
-  text    String
   todo_id Int    @id @default(autoincrement())
+  text    String
   user_id User
 }
 
